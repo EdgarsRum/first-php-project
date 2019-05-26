@@ -1,0 +1,56 @@
+version: '3'
+services:
+
+#Docker toolbox is used, project directory is mapped to shared folder /apply
+
+  #PHP Service
+  app:
+    image: php:fpm-alpine
+    container_name: edgars-php
+    tty: true
+    volumes:
+      - /apply:/var/www/laravel
+    entrypoint:
+      - php-fpm
+    networks:
+      - app-network
+
+  #Nginx Service
+  webserver:
+    image: nginx:alpine
+    container_name: edgars-webserver
+    tty: true
+#    volumes_from:
+#      - app
+    volumes:
+      - /apply:/var/www/laravel
+      - /apply/nginx:/etc/nginx/conf.d
+#    links:
+#      - app
+    ports:
+      - "8080:80"
+      - "443:443"
+    networks:
+      - app-network
+
+  #MySQL Service
+  mysql:
+    image: mysql:8.0.16
+    container_name: edgars-database
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: apply
+      MYSQL_ROOT_PASSWORD: edgars-secret-pw
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app-network
+
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
