@@ -18,3 +18,5 @@ Route::get('/', function () {
 Route::get('/apply', function () {
     return view('apply');
 });
+
+Route::get('/apply/records', 'RecordsController@index');
