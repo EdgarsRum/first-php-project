@@ -11,7 +11,21 @@ class RecordsController extends Controller
     {
 
         return $project = ApplyRecord::all();
+    }
 
-        return view('apply');
+    public function post()
+    {
+        $record = new ApplyRecord();
+        $record->description = request('description');
+        $record->save();
+        return ApplyRecord::all();
+//        return request()->all();
+//        return request('description');
+    }
+
+
+    public function create()
+    {
+        return view('apply.create');
     }
 }

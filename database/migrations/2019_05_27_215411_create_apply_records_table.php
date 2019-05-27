@@ -16,7 +16,8 @@ class CreateApplyRecordsTable extends Migration
         Schema::create('apply_records', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('description');
-            $table->timestamp('created')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
