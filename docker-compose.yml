@@ -6,7 +6,7 @@ services:
   #PHP Service
   app:
     image: php:fpm-alpine
-    container_name: edgars-php
+    container_name: app
     tty: true
     volumes:
       - /apply:/var/www/laravel
@@ -18,7 +18,7 @@ services:
   #Nginx Service
   webserver:
     image: nginx:alpine
-    container_name: edgars-webserver
+    container_name: webserver
     tty: true
 #    volumes_from:
 #      - app
@@ -35,7 +35,8 @@ services:
 
   #MySQL Service
   mysql:
-    image: mysql:8.0.16
+#    revert to older version because newer ones changed password encryption type that doesn't work with laravel out of the box
+    image: mysql:5.7.26
     container_name: edgars-database
     restart: unless-stopped
     tty: true
