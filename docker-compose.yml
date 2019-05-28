@@ -1,7 +1,7 @@
 version: '3'
 services:
 
-#Docker toolbox is used, project directory is mapped to shared folder /apply
+#Docker toolbox is used, project directory is mapped to shared folder /applyIt/
 
   #PHP Service
   app:
@@ -9,7 +9,7 @@ services:
     container_name: app
     tty: true
     volumes:
-      - /apply:/var/www/laravel
+      - /applyIt/:/var/www/laravel/
     entrypoint:
       - php-fpm
     networks:
@@ -23,8 +23,8 @@ services:
 #    volumes_from:
 #      - app
     volumes:
-      - /apply:/var/www/laravel
-      - /apply/nginx:/etc/nginx/conf.d
+      - /applyIt/:/var/www/laravel/
+      - /applyIt/nginx/:/etc/nginx/conf.d/
 #    links:
 #      - app
     ports:
