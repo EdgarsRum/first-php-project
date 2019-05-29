@@ -1,17 +1,19 @@
 version: '3'
 services:
 
-#Docker toolbox is used, project directory is mapped to shared folder /applyIt/
+#Docker toolbox is used, project directory is mapped to shared folder /applyIt/ instead of ./ as it would be for native docker
 
   #PHP Service
   app:
-    image: php:fpm-alpine
+    build: .
     container_name: app
     tty: true
     volumes:
       - /applyIt/:/var/www/laravel/
     entrypoint:
-      - php-fpm
+      - /var/www/laravel/app.sh
+    depends_on:
+      - mysql
     networks:
       - app-network
 
@@ -27,6 +29,8 @@ services:
       - /applyIt/nginx/:/etc/nginx/conf.d/
 #    links:
 #      - app
+    depends_on:
+      - app
     ports:
       - "8080:80"
       - "443:443"
@@ -35,7 +39,7 @@ services:
 
   #MySQL Service
   mysql:
-#    revert to older version because newer ones changed password encryption type that doesn't work with laravel out of the box
+#    reverted to older version because newer ones changed password encryption type that doesn't work with laravel out of the box
     image: mysql:5.7.26
     container_name: edgars-database
     restart: unless-stopped
