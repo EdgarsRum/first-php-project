@@ -22,3 +22,5 @@ Route::get('/apply', function () {
 Route::get('/apply/records', 'RecordsController@index');
 Route::post('/apply/records', 'RecordsController@post');
 Route::get('/apply/records/create', 'RecordsController@create');
+
+Route::get('/apply/auto-generate/{flag}', 'RecordsController@autoGenerate');

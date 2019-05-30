@@ -5,14 +5,14 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 
-class NewRecord extends Command
+class NewState extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'apply:record';
+    protected $signature = 'apply:auto-generate-state';
 
     /**
      * The console command description.
@@ -38,7 +38,6 @@ class NewRecord extends Command
      */
     public function handle()
     {
-        DB::table('apply_records')->insert(['description' => 'test']);
-        DB::table('apply_records')->insert(['description' => 'test']);
+        DB::table('apply_states')->insert(['description' => 'auto-generate','enabled' => true]);
     }
 }

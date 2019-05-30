@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\ApplyState;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
@@ -25,8 +26,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function (){
-            DB::table('apply_records')->insert(['description' => 'testSchedule']);
+        $schedule->call(function () {
+            $state = ApplyState::where('description', '=', 'auto-generate')->firstOrFail();
+            if ($state->enabled) {
+                DB::table('apply_records')->insert(['description' => 'apply scheduler record2']);
+            }
         })->everyMinute();
     }
 

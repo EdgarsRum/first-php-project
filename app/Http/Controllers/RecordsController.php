@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ApplyRecord;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecordsController extends Controller
 {
@@ -23,6 +23,15 @@ class RecordsController extends Controller
 //        return request('description');
     }
 
+    public function autoGenerate()
+    {
+        $flag = request('flag');
+        $enabled = (int)($flag === 'true');
+        $state = DB::table('apply_states')
+            ->where('description', 'auto-generate')
+            ->update(['enabled' => $enabled]);
+        return $state;
+    }
 
     public function create()
     {
