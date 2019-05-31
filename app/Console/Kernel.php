@@ -29,7 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->call(function () {
             $state = ApplyState::where('description', '=', 'auto-generate')->firstOrFail();
             if ($state->enabled) {
-                DB::table('apply_records')->insert(['description' => 'apply scheduler record2']);
+                DB::table('apply_records')->insert(['description' => 'apply scheduler record']);
             }
         })->everyMinute();
     }

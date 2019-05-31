@@ -27,8 +27,6 @@ services:
     volumes:
       - /applyIt/:/var/www/laravel/
       - /applyIt/nginx/:/etc/nginx/conf.d/
-#    links:
-#      - app
     depends_on:
       - app
     ports:
