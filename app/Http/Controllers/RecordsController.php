@@ -21,9 +21,4 @@ class RecordsController extends Controller
             ->update(['enabled' => $enabled]);
         return $state;
     }
-
-    public function create()
-    {
-        return view('apply.create');
-    }
 }
