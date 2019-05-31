@@ -6,3 +6,5 @@ RUN docker-php-ext-install pdo_mysql
 COPY root-crontab /var/spool/cron/crontabs/root
 
 EXPOSE 9000
+
+CMD ["php-fpm"]
