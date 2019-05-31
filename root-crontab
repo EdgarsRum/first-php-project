@@ -7,5 +7,5 @@
 0       5       1       *       *       run-parts /etc/periodic/monthly
 
 # Laravel scheduler runner
-*       *       *       *       *       /usr/local/bin/php /var/www/laravel/artisan schedule:run >> /laravelCronOutputFile.txt 2>&1
+*       *       *       *       *       /usr/local/bin/php /var/www/laravel/artisan schedule:run >> /dev/null 2>&1
 
