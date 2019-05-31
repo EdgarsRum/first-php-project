@@ -11,16 +11,12 @@
 |
 */
 
+//View
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/apply', function () {
     return view('apply');
 });
 
-Route::get('/apply/records', 'RecordsController@index');
-Route::post('/apply/records', 'RecordsController@post');
-Route::get('/apply/records/create', 'RecordsController@create');
-
-Route::get('/apply/auto-generate/{flag}', 'RecordsController@autoGenerate');
+// EP to retrieve
+Route::get('/records', 'RecordsController@index');
+// EP to enable or disable the system
+Route::get('/auto-generate/{flag}', 'RecordsController@autoGenerate');

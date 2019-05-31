@@ -38,6 +38,6 @@ class NewState extends Command
      */
     public function handle()
     {
-        DB::table('apply_states')->insert(['description' => 'auto-generate','enabled' => true]);
+        DB::table('apply_states')->updateOrInsert(['id' => 1, 'description' => 'auto-generate','enabled' => true]);
     }
 }

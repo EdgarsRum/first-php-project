@@ -22,8 +22,6 @@ services:
     image: nginx:alpine
     container_name: webserver
     tty: true
-#    volumes_from:
-#      - app
     volumes:
       - /applyIt/:/var/www/laravel/
       - /applyIt/nginx/:/etc/nginx/conf.d/

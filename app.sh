@@ -9,12 +9,12 @@
 #    sleep 2
 #done
 
-echo 'Waiting 15 seconds for mySql server to fully start'
-sleep  15
+echo 'Waiting 20 seconds for mySql server to fully start'
+sleep  20
 echo 'starting migration'
 php /var/www/laravel/artisan migrate
-echo 'Setting initial state for data autogeneration'
-php artisan apply:auto-generate-state
+echo 'Setting initial state for data auto-generation'
+php /var/www/laravel/artisan apply:auto-generate-state
 echo 'Start up crond'
 crond start
 echo 'Start php-fpm server'

@@ -38,7 +38,7 @@
                 </v-container>
             </v-content>
             <v-footer app fixed>
-                <span>&copy; Edgars App 2018</span>
+                <span>&copy; Edgars Php App 2019</span>
             </v-footer>
         </v-app>
     </div>
@@ -53,7 +53,7 @@
             drawer: true,
             headers: [
                 { text: 'Id', value: 'id' },
-                { text: 'Calories', value: 'description' },
+                { text: 'Description', value: 'description' },
                 { text: 'Created', value: 'created_at' },
                 { text: 'Updated', value: 'updated_at' },
             ],
@@ -62,10 +62,10 @@
 
         methods: {
             changeState: (state) => {
-                axios.get(`/apply/auto-generate/${state}`);
+                axios.get(`/auto-generate/${state}`);
             },
             getRecords: function() {
-                axios.get('/apply/records')
+                axios.get('/records')
                     .then((response) => {
                         this.records = response.data;
                     })

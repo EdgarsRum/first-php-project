@@ -3,7 +3,6 @@
     <head>
         <title>Apply</title>
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link href="vuetify/dist/vuetify.min.css" >
         <link href="https://fonts.googleapis.com/css?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
